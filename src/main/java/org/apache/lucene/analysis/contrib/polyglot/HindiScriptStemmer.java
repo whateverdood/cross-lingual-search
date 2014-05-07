@@ -1,16 +1,11 @@
 package org.apache.lucene.analysis.contrib.polyglot;
 
-import org.apache.lucene.analysis.ar.ArabicStemmer;
+import org.apache.lucene.analysis.hi.HindiStemmer;
 
-/**
- * Used to stem Arabic script <code>TokenStream</code>s.
- *
- * @author rich
- */
-public class ArabicScriptStemmer implements ScriptStemmer {
+public class HindiScriptStemmer implements ScriptStemmer {
 
-  ArabicStemmer stemmer = new ArabicStemmer();
-
+  HindiStemmer stemmer = new HindiStemmer();
+  
   @Override
   public String stem(String term) {
     char[] termBuffer = term.toCharArray();

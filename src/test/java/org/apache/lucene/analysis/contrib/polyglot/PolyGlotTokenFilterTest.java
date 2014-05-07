@@ -27,7 +27,11 @@ public class PolyGlotTokenFilterTest {
   String arabic = "انه ضحك علي مهرج";
   String chinese_tr = "他笑的小丑";
   String italian = "rideva il clown";
-  String multiLingualRun = english + " " + arabic + " " + chinese_tr + " " + italian;
+  String hindi = "वह जोकर पर हँसे";
+  String urdu = "وہ جوکر میں ہنستے";
+  String persian = "او در دلقک خندید";
+  String multiLingualRun = english + " " + arabic + " " + chinese_tr + " " + 
+    italian + " " + hindi + " " + urdu + " " + persian;
   
   @Test
   public void testMultilingualText() throws Exception {
@@ -44,6 +48,10 @@ public class PolyGlotTokenFilterTest {
     // "على" stems to "عل"
     assertTrue("Output should contain token: عل", contains("عل", output));
     assertFalse("Output should not contain token: علي", contains("علي", output));
+    
+    // "जोकर" stems to "जो"
+    assertTrue("Output should contain token: जो", contains("जो", output));
+    assertFalse("Output should not contain token: जोकर", contains("जोकर", output));    
   }
 
   @Test
@@ -61,6 +69,10 @@ public class PolyGlotTokenFilterTest {
     // "على" stems to "عل"
     assertTrue("Output should contain token: عل", contains("عل", output));
     assertTrue("Output should contain token: علي", contains("علي", output));
+    
+    // "जोकर" stems to "जो"
+    assertTrue("Output should contain token: जो", contains("जो", output));
+    assertTrue("Output should contain token: जोकर", contains("जोकर", output));    
   }
 
   private List<List<String>> tokenizeMultiLingualRun(boolean preserveOriginalToken) throws IOException {

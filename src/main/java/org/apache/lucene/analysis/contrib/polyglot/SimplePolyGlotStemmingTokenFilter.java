@@ -54,6 +54,7 @@ public class SimplePolyGlotStemmingTokenFilter extends TokenFilter {
     this.positionAttr = input.addAttribute(PositionIncrementAttribute.class);
     stemmers.put("Latin", new LatinScriptStemmer());
     stemmers.put("Arabic", new ArabicScriptStemmer());
+    stemmers.put("Devanagari", new HindiScriptStemmer());
   }
 
   /**

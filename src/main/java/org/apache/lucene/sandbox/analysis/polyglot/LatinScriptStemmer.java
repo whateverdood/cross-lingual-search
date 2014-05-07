@@ -1,4 +1,4 @@
-package org.apache.lucene.analysis.contrib.polyglot;
+package org.apache.lucene.sandbox.analysis.polyglot;
 
 import java.io.File;
 import java.util.HashMap;

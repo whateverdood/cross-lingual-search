@@ -1,4 +1,4 @@
-package org.apache.lucene.analysis.contrib.polyglot;
+package org.apache.lucene.sandbox.analysis.polyglot;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -13,6 +13,7 @@ import org.apache.lucene.analysis.icu.ICUFoldingFilter;
 import org.apache.lucene.analysis.icu.segmentation.ICUTokenizer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.analysis.tokenattributes.PositionIncrementAttribute;
+import org.apache.lucene.sandbox.analysis.polyglot.SimplePolyGlotStemmingTokenFilter;
 import org.junit.Test;
 
 /**

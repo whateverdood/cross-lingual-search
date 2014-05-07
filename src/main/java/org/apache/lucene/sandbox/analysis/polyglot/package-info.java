@@ -1,6 +1,6 @@
 /*
  * cross-lingual-search
- * org.apache.lucene.analysis.contrib.polyglot
+ * org.apache.lucene.sandbox.analysis.polyglot
  * package-info.java
  * Created on May 1, 2014 at 8:27:17 PM
  */
@@ -10,4 +10,4 @@
  * The components in this package require Lucene's analyzers-icu package.
  * @author rich
  */
-package org.apache.lucene.analysis.contrib.polyglot;
+package org.apache.lucene.sandbox.analysis.polyglot;

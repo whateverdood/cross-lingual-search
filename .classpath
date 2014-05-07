@@ -4,19 +4,19 @@
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/test/resources"/>
 	<classpathentry kind="src" path="src/main/resources"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="lib/analysis-extras/lib/icu4j-49.1.jar"/>
-	<classpathentry kind="lib" path="lib/analysis-extras/lib/morfologik-fsa-1.5.5.jar"/>
-	<classpathentry kind="lib" path="lib/analysis-extras/lib/morfologik-polish-1.5.5.jar"/>
-	<classpathentry kind="lib" path="lib/analysis-extras/lib/morfologik-stemming-1.5.5.jar"/>
-	<classpathentry kind="lib" path="lib/analysis-extras/lucene-libs/lucene-analyzers-icu-4.3.1.jar"/>
-	<classpathentry kind="lib" path="lib/analysis-extras/lucene-libs/lucene-analyzers-morfologik-4.3.1.jar"/>
-	<classpathentry kind="lib" path="lib/analysis-extras/lucene-libs/lucene-analyzers-smartcn-4.3.1.jar"/>
-	<classpathentry kind="lib" path="lib/analysis-extras/lucene-libs/lucene-analyzers-stempel-4.3.1.jar"/>
-	<classpathentry kind="lib" path="lib/lucene-analyzers-common-4.3.1.jar"/>
-	<classpathentry kind="lib" path="lib/lucene-core-4.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/langid/lib/jsonic-1.2.7.jar"/>
 	<classpathentry kind="lib" path="lib/langid/lib/langdetect-1.1-20120112.jar"/>
+	<classpathentry kind="lib" path="lib/analysis-extras/lib/icu4j-52.1.jar"/>
+	<classpathentry kind="lib" path="lib/analysis-extras/lib/morfologik-fsa-1.7.1.jar"/>
+	<classpathentry kind="lib" path="lib/analysis-extras/lib/morfologik-polish-1.7.1.jar"/>
+	<classpathentry kind="lib" path="lib/analysis-extras/lib/morfologik-stemming-1.7.1.jar"/>
+	<classpathentry kind="lib" path="lib/analysis-extras/lucene-libs/lucene-analyzers-icu-4.8.0.jar"/>
+	<classpathentry kind="lib" path="lib/analysis-extras/lucene-libs/lucene-analyzers-morfologik-4.8.0.jar"/>
+	<classpathentry kind="lib" path="lib/analysis-extras/lucene-libs/lucene-analyzers-smartcn-4.8.0.jar"/>
+	<classpathentry kind="lib" path="lib/analysis-extras/lucene-libs/lucene-analyzers-stempel-4.8.0.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-analyzers-common-4.8.0.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-core-4.8.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

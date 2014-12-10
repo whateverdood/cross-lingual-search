@@ -2,6 +2,7 @@ package org.apache.lucene.analysis.polyglot.charfilter;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -98,6 +99,10 @@ public class LangIdCharFilter extends BaseCharFilter {
     return joined;
   }
 
+  /**
+   * LanguageOffsets is an ordered Map of identified languages, keyed by 
+   * the last position of each continuous run of language text.
+   */
   @SuppressWarnings("serial")
   public static class LanguageOffsets extends LinkedHashMap<Integer, String> {
     public String langAtOffset(int i) {
@@ -107,6 +112,10 @@ public class LangIdCharFilter extends BaseCharFilter {
         }
       }
       return "en"; // TODO: default lang should be configurable
+    }
+    
+    public Collection<String> getLanguages() {
+      return values();
     }
   }
 

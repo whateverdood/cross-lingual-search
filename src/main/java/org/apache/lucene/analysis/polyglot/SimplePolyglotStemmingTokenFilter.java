@@ -11,7 +11,9 @@ import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.polyglot.tokenattributes.LanguageAttribute;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.analysis.tokenattributes.PositionIncrementAttribute;
+import org.tartarus.snowball.SnowballProgram;
 import org.tartarus.snowball.ext.EnglishStemmer;
+import org.tartarus.snowball.ext.FrenchStemmer;
 import org.tartarus.snowball.ext.RussianStemmer;
 
 /**
@@ -57,6 +59,7 @@ public class SimplePolyglotStemmingTokenFilter extends TokenFilter {
     stemmers.put("ar", new ArabicScriptStemmer());
     stemmers.put("ru", new SnowballStemmer(new RussianStemmer()));
     stemmers.put("hi", new HindiScriptStemmer());
+    stemmers.put("fr", new SnowballStemmer(new FrenchStemmer()));
   }
 
   /**

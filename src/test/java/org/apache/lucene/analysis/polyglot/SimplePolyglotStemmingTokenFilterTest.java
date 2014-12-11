@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.apache.lucene.analysis.TokenStream;
+import org.apache.lucene.analysis.charfilter.HTMLStripCharFilter;
 import org.apache.lucene.analysis.icu.ICUFoldingFilter;
 import org.apache.lucene.analysis.icu.segmentation.ICUTokenizer;
 import org.apache.lucene.analysis.polyglot.charfilter.LangIdCharFilterFactory;
@@ -25,20 +26,16 @@ import org.junit.Test;
  *
  * @author rich
  */
-public class PolyglotFilterTest {
+public class SimplePolyglotStemmingTokenFilterTest {
 
-  String english = "The child laughed at the silly clown.";
-  String arabic = "انه ضحك علي مهرج.";
-  String chinese_tr = "他笑的小丑。";
-  String italian = "Il bambino rise pagliaccio stupido.";
+  private static final HashMap<String, String> NO_ARGS = new HashMap<String, String>();
+  String english = "The child laughed at the silly clown. ";
+  String arabic = "انه ضحك علي مهرج. ";
   String hindi = "वह जोकर पर हँसे.";
-  String urdu = "وہ جوکر میں ہنستے.";
-  String persian = "او در دلقک خندید.";
-  String multiLingualRun = english + " " + arabic + " " + chinese_tr + " " + 
-    italian + " " + hindi + " " + urdu + " " + persian;
+  String multiLingualRun = english + arabic + hindi;
   
   @Test
-  public void testMultilingualText() throws Exception {
+  public void testMultilingualStemming() throws Exception {
     boolean dontPreserveOriginalToken = false;
     List<List<String>> output = tokenize(dontPreserveOriginalToken);
     
@@ -59,7 +56,7 @@ public class PolyglotFilterTest {
   }
 
   @Test
-  public void testMultilingualTextPreservingOriginalTokens() throws Exception {
+  public void testMultilingualStemmingPreservingOriginalTokens() throws Exception {
     boolean withOriginalToken = true;
     List<List<String>> output = tokenize(withOriginalToken);
     
@@ -80,7 +77,8 @@ public class PolyglotFilterTest {
   }
 
   private List<List<String>> tokenize(boolean preserveOriginalToken) throws IOException {
-    Reader r = new LangIdCharFilterFactory(new HashMap<String, String>()).create(new StringReader(multiLingualRun));
+    Reader r = new LangIdCharFilterFactory(NO_ARGS).create(
+      new HTMLStripCharFilter(new StringReader(multiLingualRun)));
     TokenStream tokenStream = new ICUTokenizer(r);
     tokenStream = new ICUFoldingFilter(tokenStream);
     tokenStream = new LanguageMarkerFilter(tokenStream);

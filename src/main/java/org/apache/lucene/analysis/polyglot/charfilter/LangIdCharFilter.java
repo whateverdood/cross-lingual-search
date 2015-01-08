@@ -20,19 +20,27 @@ import com.ibm.icu.text.BreakIterator;
  * analysis components. 
  */
 public class LangIdCharFilter extends BaseCharFilter {
-  
+    
   private static ThreadLocal<LanguageOffsets> languageOffsets = new ThreadLocal<LanguageOffsets>() {
     protected LanguageOffsets initialValue() {
       return new LangIdCharFilter.LanguageOffsets();
     };
   };
-  
+
   public static LanguageOffsets getLanguageOffsets() {
     return languageOffsets.get();
   }
 
+  private Detector detector;
+  private int minSentenceLength = 10;
+  
   public LangIdCharFilter(Reader in) {
     super(in);
+    try {
+      detector = DetectorFactory.create();
+    } catch (LangDetectException e) {
+      throw new IllegalStateException(e);
+    }
   }
 
   @Override
@@ -56,24 +64,27 @@ public class LangIdCharFilter extends BaseCharFilter {
   }
   
   private void langIdSentences(String text) {
-    BreakIterator breaksIntoSentences = BreakIterator.getSentenceInstance();
-    breaksIntoSentences.setText(text);
+    BreakIterator sentenceBreakIterator = BreakIterator.getSentenceInstance();
+    sentenceBreakIterator.setText(text);
     
     Map<Integer, String> langPos = new LinkedHashMap<Integer, String>();
     
-    int start = breaksIntoSentences.first();
-    for (int end = breaksIntoSentences.next(); end != BreakIterator.DONE; 
-      start = end, end = breaksIntoSentences.next()) {
+    int start = sentenceBreakIterator.first();
+    for (int end = sentenceBreakIterator.next(); end != BreakIterator.DONE; 
+      start = end, end = sentenceBreakIterator.next()) {
       
       String sentence = text.substring(start, end);
       if (null != sentence && !"".equals(sentence.trim())) {
-        try {
-          Detector langId = DetectorFactory.create();
-          langId.append(sentence);
-          String lang = langId.detect();
-          langPos.put(end, lang);
-        } catch (LangDetectException e) {
-          // TODO: handle or ignore?
+        if (sentence.length() >= minSentenceLength) {          
+          try {
+            detector.setText(sentence);
+            String lang = detector.detect();
+            langPos.put(end, lang);
+          } catch (LangDetectException e) {
+            // TODO: handle or ignore?
+          }
+        } else {
+          langPos.put(end, "N/A");          
         }
       }
     }
